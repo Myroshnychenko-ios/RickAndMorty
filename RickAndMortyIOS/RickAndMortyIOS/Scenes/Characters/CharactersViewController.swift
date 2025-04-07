@@ -58,6 +58,7 @@ extension CharactersViewController: CharactersViewControllerProtocol {
         self.isLast = viewModel.isLast
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
+        self.interactor?.save(self.characters)
     }
 
 }
@@ -67,14 +68,14 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource / UITableViewDelegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.characters.count + (self.isLast ? 0 : 1)
+        return self.characters.count == 0 ? 1 : self.characters.count + (self.isLast ? 0 : 1)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == self.characters.count, !self.isLast {
             return 84.0
         }
-        return tableView.frame.width + 52.0
+        return self.characters.count == 0 ? tableView.frame.height - 48.0 : tableView.frame.width + 52.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,12 +90,20 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return cell
         }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.reuseIdentifier, for: indexPath) as? CharacterTableViewCell else {
-            return UITableViewCell()
+        if self.characters.count != 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.reuseIdentifier, for: indexPath) as? CharacterTableViewCell else {
+                return UITableViewCell()
+            }
+            let characters = self.characters[indexPath.row]
+            cell.configure(with: characters)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NoDataTableViewCell.reuseIdentifier, for: indexPath) as? NoDataTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: "No Data")
+            return cell
         }
-        let characters = self.characters[indexPath.row]
-        cell.configure(with: characters)
-        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -158,6 +167,7 @@ extension CharactersViewController {
         self.tableView.separatorStyle = .none
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.register(NoDataTableViewCell.self, forCellReuseIdentifier: NoDataTableViewCell.reuseIdentifier)
         self.tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.reuseIdentifier)
         self.tableView.register(ButtonTableViewCell.self, forCellReuseIdentifier: ButtonTableViewCell.reuseIdentifier)
     }

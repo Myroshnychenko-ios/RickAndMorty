@@ -30,7 +30,7 @@ enum CharactersModel {
         }
 
         struct Response: Decodable {
-            let info: InfoObject
+            let info: InfoObject?
             let results: [CharacterObject]
         }
 

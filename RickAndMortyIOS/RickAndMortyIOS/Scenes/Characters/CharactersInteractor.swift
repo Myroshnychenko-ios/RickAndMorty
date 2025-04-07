@@ -10,6 +10,7 @@ import Foundation
 protocol CharactersInteractorProtocol {
 
     func getCharacters(with request: CharactersModel.GetCharacters.Request)
+    func save(_ characters: [CharacterObject])
 
 }
 
@@ -21,7 +22,9 @@ class CharactersInteractor: CharactersInteractorProtocol {
 
     // MARK: - Private Properties
 
+    private let monitor = NWMonitor()
     private let httpService = HTTPService()
+    private let storageService = StorageService()
 
     private var page = 1
     private var isLast = false
@@ -42,13 +45,20 @@ class CharactersInteractor: CharactersInteractorProtocol {
                 switch result {
                 case .success(let response):
                     self.page += 1
-                    self.isLast = response.info.next == nil
+                    self.isLast = response.info?.next == nil
                     self.presenter?.presentCharacters(with: response, isLast: self.isLast)
                 case .failure(let error):
-                    print(error.description)
+                    if !self.monitor.isConnected {
+                        let characters = self.storageService.fetch()
+                        self.presenter?.presentCharacters(with: CharactersModel.GetCharacters.Response(info: nil, results: characters), isLast: true)
+                    }
                 }
             }
         }
+    }
+
+    func save(_ characters: [CharacterObject]) {
+        self.storageService.save(characters)
     }
 
 }

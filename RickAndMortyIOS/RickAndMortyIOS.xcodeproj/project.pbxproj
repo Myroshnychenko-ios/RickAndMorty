@@ -39,6 +39,13 @@
 		285497132DA3D4B400F0E003 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285497122DA3D4B400F0E003 /* HeaderView.swift */; };
 		285497162DA3DACF00F0E003 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285497152DA3DACF00F0E003 /* DetailTableViewCell.swift */; };
 		285497182DA3E99100F0E003 /* EpisodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285497172DA3E99100F0E003 /* EpisodeObject.swift */; };
+		285497222DA4028F00F0E003 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285497212DA4028F00F0E003 /* StorageService.swift */; };
+		285497252DA404CB00F0E003 /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 285497232DA404CB00F0E003 /* Storage.xcdatamodeld */; };
+		2854972B2DA415E600F0E003 /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2854972A2DA415E600F0E003 /* CharacterEntity.swift */; };
+		2854972D2DA416CE00F0E003 /* OriginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2854972C2DA416CE00F0E003 /* OriginEntity.swift */; };
+		2854972F2DA416DA00F0E003 /* LocationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2854972E2DA416DA00F0E003 /* LocationEntity.swift */; };
+		285497322DA41C9D00F0E003 /* NWMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285497312DA41C9D00F0E003 /* NWMonitor.swift */; };
+		285497342DA41EA300F0E003 /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285497332DA41EA300F0E003 /* NoDataTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +83,13 @@
 		285497122DA3D4B400F0E003 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		285497152DA3DACF00F0E003 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		285497172DA3E99100F0E003 /* EpisodeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeObject.swift; sourceTree = "<group>"; };
+		285497212DA4028F00F0E003 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		285497242DA404CB00F0E003 /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
+		2854972A2DA415E600F0E003 /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
+		2854972C2DA416CE00F0E003 /* OriginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginEntity.swift; sourceTree = "<group>"; };
+		2854972E2DA416DA00F0E003 /* LocationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEntity.swift; sourceTree = "<group>"; };
+		285497312DA41C9D00F0E003 /* NWMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWMonitor.swift; sourceTree = "<group>"; };
+		285497332DA41EA300F0E003 /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +147,7 @@
 				285496B62DA01F7000F0E003 /* Assets.xcassets */,
 				285496B72DA01F7000F0E003 /* Info.plist */,
 				285496B92DA01F7000F0E003 /* LaunchScreen.storyboard */,
+				285497232DA404CB00F0E003 /* Storage.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -184,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				285496DC2DA0696E00F0E003 /* HTTPService */,
+				285497202DA4026300F0E003 /* StorageService */,
+				285497302DA41C8A00F0E003 /* NWMonitor */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -211,6 +228,7 @@
 		285496EB2DA13EAB00F0E003 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				285497352DA41EA800F0E003 /* NoDataTableViewCell */,
 				285496EC2DA13EB600F0E003 /* CharacterTableViewCell */,
 				285496F22DA1B04F00F0E003 /* ButtonTableViewCell */,
 				285497002DA31CBE00F0E003 /* ImageHeaderView */,
@@ -232,6 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				285496F02DA1AD0300F0E003 /* UIImageView.swift */,
+				2854972C2DA416CE00F0E003 /* OriginEntity.swift */,
+				2854972E2DA416DA00F0E003 /* LocationEntity.swift */,
+				2854972A2DA415E600F0E003 /* CharacterEntity.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -279,6 +300,30 @@
 				285497152DA3DACF00F0E003 /* DetailTableViewCell.swift */,
 			);
 			path = DetailTableViewCell;
+			sourceTree = "<group>";
+		};
+		285497202DA4026300F0E003 /* StorageService */ = {
+			isa = PBXGroup;
+			children = (
+				285497212DA4028F00F0E003 /* StorageService.swift */,
+			);
+			path = StorageService;
+			sourceTree = "<group>";
+		};
+		285497302DA41C8A00F0E003 /* NWMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				285497312DA41C9D00F0E003 /* NWMonitor.swift */,
+			);
+			path = NWMonitor;
+			sourceTree = "<group>";
+		};
+		285497352DA41EA800F0E003 /* NoDataTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				285497332DA41EA300F0E003 /* NoDataTableViewCell.swift */,
+			);
+			path = NoDataTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,12 +400,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				285497162DA3DACF00F0E003 /* DetailTableViewCell.swift in Sources */,
+				285497252DA404CB00F0E003 /* Storage.xcdatamodeld in Sources */,
 				285496DA2DA04A4E00F0E003 /* CharactersModel.swift in Sources */,
 				285496E02DA06A8E00F0E003 /* HTTPError.swift in Sources */,
+				2854972B2DA415E600F0E003 /* CharacterEntity.swift in Sources */,
 				285496EE2DA13EDA00F0E003 /* CharacterTableViewCell.swift in Sources */,
 				285496D42DA0427300F0E003 /* CharactersPresenter.swift in Sources */,
+				285497322DA41C9D00F0E003 /* NWMonitor.swift in Sources */,
 				285497052DA3BBB000F0E003 /* DetailsModel.swift in Sources */,
 				285496CF2DA026AF00F0E003 /* CharactersConfigurator.swift in Sources */,
+				285497342DA41EA300F0E003 /* NoDataTableViewCell.swift in Sources */,
 				285497032DA31D2E00F0E003 /* ImageHeaderView.swift in Sources */,
 				285496EA2DA06D3200F0E003 /* Constants.swift in Sources */,
 				285496F92DA2E4EB00F0E003 /* DetailsInteractor.swift in Sources */,
@@ -374,9 +423,12 @@
 				285496FD2DA2E4FF00F0E003 /* DetailsRouter.swift in Sources */,
 				285496F72DA2E4E100F0E003 /* DetailsViewController.swift in Sources */,
 				285496D22DA0426500F0E003 /* CharactersInteractor.swift in Sources */,
+				285497222DA4028F00F0E003 /* StorageService.swift in Sources */,
+				2854972F2DA416DA00F0E003 /* LocationEntity.swift in Sources */,
 				285496E22DA06A9A00F0E003 /* HTTPRequest.swift in Sources */,
 				2854970A2DA3BD4F00F0E003 /* OriginObject.swift in Sources */,
 				285496DE2DA06A8200F0E003 /* HTTPMethod.swift in Sources */,
+				2854972D2DA416CE00F0E003 /* OriginEntity.swift in Sources */,
 				285496CB2DA0266500F0E003 /* CharactersViewController.swift in Sources */,
 				2854970E2DA3BD6B00F0E003 /* CharacterObject.swift in Sources */,
 				285496E42DA06AAC00F0E003 /* HTTPService.swift in Sources */,
@@ -600,6 +652,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		285497232DA404CB00F0E003 /* Storage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				285497242DA404CB00F0E003 /* Storage.xcdatamodel */,
+			);
+			currentVersion = 285497242DA404CB00F0E003 /* Storage.xcdatamodel */;
+			path = Storage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 285496952DA01F6700F0E003 /* Project object */;
 }
